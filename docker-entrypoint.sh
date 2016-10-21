@@ -29,6 +29,7 @@ if [ "$MYSQL_DATABASE" != "" ]; then
 fi
 
 chown mysql "$MYSQL_INITFILE"
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p 'new-password' mysql
 /usr/bin/mysqld_safe --user=root --init-file=$MYSQL_INITFILE
 rm -f $MYSQL_INITFILE
 
